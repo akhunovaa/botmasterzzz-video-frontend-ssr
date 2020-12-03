@@ -50,7 +50,7 @@ export function template(video = []) {
      <meta name="twitter:player:height" content="720"/>
       
 <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
-<link rel="apple-touch-icon" href="./logo192.png" />
+<link rel="apple-touch-icon" href="logo192.png" />
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 </head>
 `
