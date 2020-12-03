@@ -38,6 +38,15 @@ registryUrl = "https://registry.yourapi.ru"
             }
         }
 
+                stage('Build NPM SSR') {
+                    steps {
+                        echo 'Building npm server side rendering'
+                        nodejs('Node 10.15.0 LTS') {
+                            sh 'npm run-script build-ssr'
+                        }
+                    }
+                }
+
         stage('Build Docker Image') {
             steps {
                 echo "Building image: $registry:$BUILD_NUMBER"
