@@ -80,7 +80,7 @@ const TrendingCard = ({ video }) => {
           <div className="channel-avatar">
               <Avatar
                   style={{ marginRight: "0.8rem" }}
-                  src="https://video.yourapi.ru/img/default.jpeg"
+                  src="https://video.yourapi.ru/default.jpeg"
                   alt={video.title}
               />
           </div>

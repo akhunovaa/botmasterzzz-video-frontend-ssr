@@ -9,10 +9,10 @@ const VideoCard = ({ video }) => {
 
   return (
     <div className='video-card'>
-      <img className="thumb" src={video.thumbnail} onError={(e) => {e.target.src = 'https://video.yourapi.ru/img/default.jpeg'; e.target.onError = null;}} alt={video.title} />
+      <img className="thumb" src={video.thumbnail} onError={(e) => {e.target.src = 'https://video.yourapi.ru/default.jpeg'; e.target.onError = null;}} alt={video.title} />
       <div className="video-info-container">
         <div className="channel-avatar">
-            <div className='avatar' style={{ marginRight: "0.8rem" }}><img src="https://video.yourapi.ru/img/default.jpeg" alt={video.title}/></div>
+            <div className='avatar' style={{ marginRight: "0.8rem" }}><img src="https://video.yourapi.ru/default.jpeg" alt={video.title}/></div>
         </div>
         <div className="video-info">
           <h4>
