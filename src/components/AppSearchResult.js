@@ -36,8 +36,25 @@ class AppSearchResult extends Component {
         const {videos} = this.state;
 
         if (undefined === videos || videos.length === 0) {
-            return <NoResults title="Ничего не найдено..."
-                              text="Попробуйте другой запрос или попробуйте поискать в нашем уютном Телеграмм боте: https://t.me/tiktiktokrobot 😊"/>
+            return (
+                <Provider store={store}>
+                    <div>
+                        <div/>
+                        <ToastContainer
+                            autoClose={2500}
+                            position="top-right"
+                            closeButton={false}
+                        />
+                        <ScrollToTop/>
+                        <Navbar/>
+                        <Sidebar/>
+                        <BottomBar/>
+                        <div className='home-container'>
+                            <NoResults title="Ничего не найдено..."
+                                       text="Попробуйте другой запрос или попробуйте поискать в нашем уютном Телеграмм боте: https://t.me/tiktiktokrobot 😊"/>
+                        </div>
+                    </div>
+                </Provider>)
         }
 
         return (
@@ -54,7 +71,8 @@ class AppSearchResult extends Component {
                     <Sidebar/>
                     <BottomBar/>
                     <div className='home-container'>
-                        <div className='trending' style={{padding: '2rem 1.3rem 7rem', width: '85%', margin: '0px auto'}}>
+                        <div className='trending'
+                             style={{padding: '2rem 1.3rem 7rem', width: '85%', margin: '0px auto'}}>
                             <h2>Результаты поиска</h2>
                             {videos.map((video) => (
                                 <a key={video.id} href={`/watch/${video.id}`}>
