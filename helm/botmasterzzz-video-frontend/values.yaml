@@ -2,7 +2,7 @@ replicaCount: 3
 
 image:
   repository: registry.yourapi.ru/botmasterzzz-video-frontend
-  appVersion: 16
+  appVersion: 17
   pullPolicy: IfNotPresent
 
 imagePullSecrets:

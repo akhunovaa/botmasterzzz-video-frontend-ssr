@@ -21,8 +21,8 @@ export function template(video = []) {
 <meta property="og:video:url" content='${video.src}'/>
 <meta property="og:video:secure_url" content='${video.src}'/>
 <meta property="og:video:type" content="video/mp4">
-<meta property="og:video:width" content="1280">
-<meta property="og:video:height" content="720">
+<meta property="og:video:width" content="1280"/>
+<meta property="og:video:height" content="720"/>
 <meta property="ya:ovs:original_name" content='${title}'/>
 <meta property="ya:ovs:allow_embed" content="true"/>
 <meta property="ya:ovs:upload_date" content='${new Date(video.createdAt * 1000).toISOString()}'/>
@@ -38,16 +38,6 @@ export function template(video = []) {
 <meta name="yandex-verification" content="1129f2c83f838b55" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-
-     <meta name="twitter:card" content="player"/>
-    <meta name="twitter:site" content="@yourapi_ru"/>
-    <meta name="twitter:url" content='${"https://video.yourapi.ru/watch/" + video.id}'/>
-    <meta name="twitter:title" content='${title}'/>
-    <meta name="twitter:description" content='${video.description}'/>
-    <meta name="twitter:image" content='${video.thumbnail}'>
-    <meta name="twitter:player" content='${video.src}'/>
-     <meta name="twitter:player:width" content="1280"/>
-     <meta name="twitter:player:height" content="720"/>
       
 <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 <link rel="apple-touch-icon" href="logo192.png" />
@@ -55,3 +45,13 @@ export function template(video = []) {
 </head>
 `
 }
+
+// <meta name="twitter:card" content="player"/>
+// <meta name="twitter:site" content="@yourapi_ru"/>
+// <meta name="twitter:url" content='${"https://video.yourapi.ru/watch/" + video.id}'/>
+// <meta name="twitter:title" content='${title}'/>
+// <meta name="twitter:description" content='${video.description}'/>
+// <meta name="twitter:image" content='${video.thumbnail}'/>
+// <meta name="twitter:player" content='${video.src}'/>
+// <meta name="twitter:player:width" content="1280"/>
+// <meta name="twitter:player:height" content="720"/>
