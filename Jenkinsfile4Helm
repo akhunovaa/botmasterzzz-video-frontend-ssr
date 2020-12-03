@@ -34,15 +34,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Testing cases'
-                nodejs('Node 10.15.0 LTS') {
-                    sh 'npm run-script test'
-                }
-            }
-        }
-
         stage('Build NPM') {
             steps {
                 echo 'Building npm'
