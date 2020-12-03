@@ -2,7 +2,7 @@ replicaCount: 3
 
 image:
   repository: registry.yourapi.ru/botmasterzzz-video-frontend
-  appVersion: 4
+  appVersion: 5
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
@@ -31,9 +31,9 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  port: 8282
+  port: 8585
   container:
-    port: 80
+    port: 8080
 
 ingress:
   enabled: false
