@@ -3,7 +3,7 @@ export function template(video = []) {
     let title = ''; // Dynamically ship scripts based on render type
     let description = ''; // Dynamically ship scripts based on render type
 // <meta property="og:image" content='${video.thumbnail}'/>
-    title = video.title + ' - ' + video.description.length > 46 ? video.description.substring(0, 45) : video.description.trim() + " BotMasterZzz | NN-BOT";
+    title = video.title + ' - ' + video.description + "| BotMasterZzz | NN-BOT";
 
     return `
 <title>${title}</title>
