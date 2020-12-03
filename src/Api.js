@@ -22,6 +22,15 @@ export function fetchVideos() {
     method: 'GET'
   });
 }
+
+export function searchVideos(searchterm) {
+  const url = "http://video.yourapi.ru/api-data/video/search?searchterm=" + searchterm;
+  return request({
+    url: url,
+    json: true,
+    method: 'GET'
+  });
+}
 //
 // export function fetchVideo(videoid) {
 //   const url = "https://video.yourapi.ru/api-data/video/4082" + videoid;

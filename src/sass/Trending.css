@@ -1,0 +1,19 @@
+.trending{
+    padding: 2rem 1.3rem 7rem;
+    width: 85%;
+    margin: 0px auto;
+
+    /*padding-bottom: ${(props) => (props.nopad ? "0.5rem" : "7rem")};*/
+}
+
+@media screen and (max-width: 930px) {
+    .trending{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .trending{
+        width: 100%;
+    }
+}

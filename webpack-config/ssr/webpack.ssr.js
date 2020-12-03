@@ -10,6 +10,8 @@ const config = {
   entry: {
     "Videos": path.resolve(__dirname, "./../../src/Videos"),
     "AppWatchVideo": path.resolve(__dirname, "./../../src/components/AppWatchVideo"),
+    "AppSearchResult": path.resolve(__dirname, "./../../src/components/AppSearchResult"),
+    "AppTrends": path.resolve(__dirname, "./../../src/components/AppTrends"),
     "Api": path.resolve(__dirname, "./../../src/Api"),
     "template": path.resolve(__dirname, "./../../server/template")
   },

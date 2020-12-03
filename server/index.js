@@ -4,10 +4,11 @@ const path = require("path")
 const fs = require("fs")
 const React = require("react")
 const {renderToNodeStream, renderToString} = require("react-dom/server")
-const {fetchVideos} = require("./../dist-ssr/Api")
+const {fetchVideos, searchVideos} = require("./../dist-ssr/Api")
 const template = require("./../dist-ssr/template")
 const Videos = require("./../dist-ssr/Videos").default
 const AppWatchVideo = require("./../dist-ssr/AppWatchVideo").default
+const AppSearchResult = require("./../dist-ssr/AppSearchResult").default
 const app = express()
 
 // // server rendered home page
@@ -95,7 +96,7 @@ app.get("/watch/:videoid", (req, res) => {
                 initialState: initialState,
                 videoid: videoid,
                 video: JSON.parse(body).response,
-                videos:[]
+                videos: []
             })
             const video = JSON.parse(body).response;
             const metaData = template.template(video)
@@ -111,7 +112,112 @@ app.get("/watch/:videoid", (req, res) => {
                 res.end()
             })
         });
-    })
+    });
+});
+
+app.get("/results/:searchterm", (req, res) => {
+    const searchterm = req.params.searchterm;
+
+    const html = fs.readFileSync(path.resolve(__dirname, `./../dist/index.html`), "utf-8")
+
+    const [head, tail] = html.split("{content}")
+    res.write(head)
+
+    let initialState = {
+        isFetching: false,
+        videos: [],
+        sidebar: false
+    }
+
+
+    searchVideos(searchterm).then(response => {
+        const reactElement = React.createElement(AppSearchResult, {
+            initialState: initialState,
+            videos: response.response,
+        })
+        const newTail = tail.split("{script}")
+            .join(`
+      <script id="ssr__script">
+        window.__VIDEOS__ = ${response.response}
+      </script>
+      `)
+        const stream = renderToNodeStream(reactElement)
+        stream.pipe(res, {end: false})
+        stream.on("end", () => {
+            res.write(newTail)
+            res.end()
+        })
+    }).catch(error => {
+        console.log(error)
+        const reactElement = React.createElement(AppSearchResult, {
+            initialState: initialState,
+            videos: [],
+        })
+        const newTail = tail.split("{script}")
+            .join(`
+      <script id="ssr__script">
+        window.__VIDEOS__ = ${[]}
+      </script>
+      `)
+        const stream = renderToNodeStream(reactElement)
+        stream.pipe(res, {end: false})
+        stream.on("end", () => {
+            res.write(newTail)
+            res.end()
+        })
+    });
+});
+
+app.get("/feed/trending", (req, res) => {
+
+    const html = fs.readFileSync(path.resolve(__dirname, `./../dist/index.html`), "utf-8")
+
+    const [head, tail] = html.split("{content}")
+    res.write(head)
+
+    let initialState = {
+        isFetching: false,
+        videos: [],
+        sidebar: false
+    }
+
+
+    fetchVideos().then(response => {
+        const reactElement = React.createElement(AppSearchResult, {
+            initialState: initialState,
+            videos: response.response,
+        })
+        const newTail = tail.split("{script}")
+            .join(`
+      <script id="ssr__script">
+        window.__VIDEOS__ = ${response.response}
+      </script>
+      `)
+        const stream = renderToNodeStream(reactElement)
+        stream.pipe(res, {end: false})
+        stream.on("end", () => {
+            res.write(newTail)
+            res.end()
+        })
+    }).catch(error => {
+        console.log(error)
+        const reactElement = React.createElement(AppSearchResult, {
+            initialState: initialState,
+            videos: [],
+        })
+        const newTail = tail.split("{script}")
+            .join(`
+      <script id="ssr__script">
+        window.__VIDEOS__ = ${[]}
+      </script>
+      `)
+        const stream = renderToNodeStream(reactElement)
+        stream.pipe(res, {end: false})
+        stream.on("end", () => {
+            res.write(newTail)
+            res.end()
+        })
+    });
 });
 
 app.use(express.static(path.join(__dirname, "./../dist")))
