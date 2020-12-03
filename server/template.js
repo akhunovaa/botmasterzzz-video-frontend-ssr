@@ -2,7 +2,7 @@
 export function template(video = []) {
     let title = ''; // Dynamically ship scripts based on render type
     let description = ''; // Dynamically ship scripts based on render type
-
+// <meta property="og:image" content='${video.thumbnail}'/>
     title = video.title + ' - ' + video.description.length > 46 ? video.description.substring(0, 45) : video.description.trim() + " BotMasterZzz | NN-BOT";
 
     return `
@@ -10,9 +10,8 @@ export function template(video = []) {
 <meta name="description" content='${video.description}'/>
 <meta property="og:description" content='${video.description}'/>
 <meta property="og:title" content='${video.title}'/>
-<meta property="og:image" content='${video.thumbnail}'/>
 <meta property="og:url" content='${"https://video.yourapi.ru/watch/" + video.id}'/>
-<meta property="og:site_name" content="video.yourapi.ru"/>
+<meta property="og:site_name" content="BotmasterZzz NN-BOT @tiktiktokrobot"/>
 <meta property="ya:ovs:adult" content="false"/>
 <meta name="keywords" content='${video.description}'/>
 <meta property="og:type" content="video.other"/>
