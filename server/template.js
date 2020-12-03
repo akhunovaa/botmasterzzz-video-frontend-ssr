@@ -13,11 +13,16 @@ export function template(video = []) {
 <meta property="og:image" content='${video.thumbnail}'/>
 <meta property="og:url" content='${"https://video.yourapi.ru/watch/" + video.id}'/>
 <meta property="og:site_name" content="BotmasterZzz NN-BOT @tiktiktokrobot"/>
-<meta property="og:type" content="video"/>
+<meta property="og:type" content="video.other"/>
 <meta property="ya:ovs:adult" content="false"/>
 <meta name="keywords" content='${video.description}'/>
 <meta property="video:duration" content='${video.duration}'/>
 <meta property="og:video" content='${video.src}'/>
+<meta property="og:video:url" content='${video.src}'/>
+<meta property="og:video:secure_url" content='${video.src}'/>
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="1280">
+<meta property="og:video:height" content="720">
 <meta property="ya:ovs:original_name" content='${title}'/>
 <meta property="ya:ovs:allow_embed" content="true"/>
 <meta property="ya:ovs:upload_date" content='${new Date(video.createdAt * 1000).toISOString()}'/>
