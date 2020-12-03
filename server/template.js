@@ -12,9 +12,9 @@ export function template(video = []) {
 <meta property="og:title" content='${video.title}'/>
 <meta property="og:url" content='${"https://video.yourapi.ru/watch/" + video.id}'/>
 <meta property="og:site_name" content="BotmasterZzz NN-BOT @tiktiktokrobot"/>
+<meta property="og:type" content="video"/>
 <meta property="ya:ovs:adult" content="false"/>
 <meta name="keywords" content='${video.description}'/>
-<meta property="og:type" content="video.other"/>
 <meta property="video:duration" content='${video.duration}'/>
 <meta property="og:video" content='${video.src}'/>
 <meta property="ya:ovs:original_name" content='${title}'/>
