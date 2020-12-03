@@ -20,29 +20,78 @@ const app = express()
 // });
 
 app.get("/", (req, res) => {
+    const searchTerm = req.query.search;
+
     const html = fs.readFileSync(path.resolve(__dirname, `./../dist/index.html`), "utf-8")
     const [head, tail] = html.split("{content}")
     res.write(head)
-    const url = "http://video.yourapi.ru/api-data/video/list"
-    request({
-        method: "GET",
-        url
-    }, (err, httpsRes, body) => {
-        const newTail = tail.split("{script}")
-            .join(`
+
+    let initialState = {
+        isFetching: false,
+        videos: [],
+        video: {},
+        sidebar: false
+    }
+
+    if (searchTerm !== undefined){
+        searchVideos(searchTerm).then(response => {
+            const reactElement = React.createElement(AppSearchResult, {
+                initialState: initialState,
+                videos: response.response,
+            })
+            const newTail = tail.split("{script}")
+                .join(`
+      <script id="ssr__script">
+        window.__VIDEOS__ = ${response.response}
+      </script>
+      `)
+            const stream = renderToNodeStream(reactElement)
+            stream.pipe(res, {end: false})
+            stream.on("end", () => {
+                res.write(newTail)
+                res.end()
+            })
+        }).catch(error => {
+            console.log(error)
+            const reactElement = React.createElement(AppSearchResult, {
+                initialState: initialState,
+                videos: [],
+            })
+            const newTail = tail.split("{script}")
+                .join(`
+      <script id="ssr__script">
+        window.__VIDEOS__ = ${[]}
+      </script>
+      `)
+            const stream = renderToNodeStream(reactElement)
+            stream.pipe(res, {end: false})
+            stream.on("end", () => {
+                res.write(newTail)
+                res.end()
+            })
+        });
+    }else {
+        const url = "http://video.yourapi.ru/api-data/video/list"
+        request({
+            method: "GET",
+            url
+        }, (err, httpsRes, body) => {
+            const newTail = tail.split("{script}")
+                .join(`
       <script id="ssr__script">
         window.__VIDEOS__ = ${JSON.stringify(body)}
       </script>
       `)
 
-        const reactElement = React.createElement(Videos, {videos: JSON.parse(body).response})
-        const stream = renderToNodeStream(reactElement)
-        stream.pipe(res, {end: false})
-        stream.on("end", () => {
-            res.write(newTail)
-            res.end()
+            const reactElement = React.createElement(Videos, {videos: JSON.parse(body).response})
+            const stream = renderToNodeStream(reactElement)
+            stream.pipe(res, {end: false})
+            stream.on("end", () => {
+                res.write(newTail)
+                res.end()
+            })
         })
-    })
+    }
 })
 
 

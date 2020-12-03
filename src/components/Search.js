@@ -21,14 +21,20 @@ const Search = () => {
 
   return (
     <div className='search-bar'>
-      <input
-        className="search"
-        type="text"
-        placeholder="Поиск"
-        value={searchterm.value}
-        onKeyDown={handleSearch}
-        onChange={searchterm.onChange}
-      />
+
+
+        <form>
+          {/* make input fully controlled */}
+          <input
+              className="search"
+              type="text"
+              placeholder="Поиск"
+              value={searchterm.value}
+              // onKeyDown={handleSearch}
+              name="search"
+              onKeyDown={handleSearch}
+          />
+        </form>
     </div>
   );
 };
