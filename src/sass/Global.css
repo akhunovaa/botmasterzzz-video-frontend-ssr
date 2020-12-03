@@ -1,0 +1,117 @@
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1rem;
+    font-family: Fira Sans, sans-serif;
+    color: #FFF;
+    background-color: #181818;
+    line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input, textarea {
+    font-family: Fira Sans, sans-serif;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus, button:focus, video:focus {
+    outline: none;
+}
+
+button {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+svg, .pointer {
+    cursor: pointer;
+}
+
+.secondary {
+    color: #AAAAAA;
+}
+
+.avatar {
+    height: 22px;
+    width: 22px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.md {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.small {
+    font-size: 0.9rem;
+}
+
+.lg {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.flex-row img, .flex-row svg {
+    margin-right: 0.8rem;
+}
+
+.ruler {
+    height: 1px;
+    background: #383838;
+    margin: 1rem 0;
+}
+
+.Toastify__toast {
+    font-family: Fira Sans, sans-serif;
+    border-radius: 4px;
+}
+
+.Toastify__toast--error {
+    background: #383838;
+}
+
+.Toastify__toast--dark, .Toastify__toast--default {
+    background: #282A36;
+    color: #fff;
+}
+
+@media screen and (max-width: 530px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}

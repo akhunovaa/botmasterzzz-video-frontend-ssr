@@ -1,0 +1,10 @@
+.skeleton-pulse .skeleton-line-q:before {
+    content: "\\00a0";
+}
+
+.skeleton-pulse .skeleton-line-q {
+    margin-bottom: 30px;
+    width: 350px;
+    height: 30px;
+    border-radius: 4px;
+}
