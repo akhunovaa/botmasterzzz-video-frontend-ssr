@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
 import videojs from "video.js";
-import {client} from "../utils";
 import "../sass/video-js.css"
 // import "video.js/dist/video-js.css";
 import window from 'global'

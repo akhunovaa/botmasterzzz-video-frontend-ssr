@@ -3,6 +3,7 @@ const common = require("./webpack.common.js")
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const path = require("path")
+const webpack = require("webpack");
 
 
 module.exports = merge(common, {
@@ -25,7 +26,10 @@ module.exports = merge(common, {
             { from: './favicon.ico', to: './favicon.ico', force:true }
           ]
         }
-    )
+    ),
+    new webpack.DefinePlugin({
+      '__REACT_DEVTOOLS_GLOBAL_HOOK__': '({ isDisabled: true })'
+    })
   ],
   module: {
     rules: [

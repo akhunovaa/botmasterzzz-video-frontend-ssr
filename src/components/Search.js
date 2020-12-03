@@ -9,7 +9,6 @@ const Search = () => {
   const searchterm = useInput("");
 
   const handleSearch = (e) => {
-    console.log("vvvstyled-components.min.js:1")
     if (e.keyCode === 13) {
       if (!searchterm.value.trim()) {
         return toast.dark("Введите запрос...");
