@@ -4,7 +4,7 @@ const path = require("path")
 const fs = require("fs")
 const React = require("react")
 const {renderToNodeStream, renderToString} = require("react-dom/server")
-const {fetchVideos, searchVideos} = require("./../dist-ssr/Api")
+const {fetchVideos, searchVideos, fetchComments} = require("./../dist-ssr/Api")
 const template = require("./../dist-ssr/template")
 const Videos = require("./../dist-ssr/Videos").default
 const AppWatchVideo = require("./../dist-ssr/AppWatchVideo").default
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
         sidebar: false
     }
 
-    if (searchTerm !== undefined){
+    if (searchTerm !== undefined) {
         searchVideos(searchTerm).then(response => {
             const reactElement = React.createElement(AppSearchResult, {
                 initialState: initialState,
@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
                 res.end()
             })
         });
-    }else {
+    } else {
         const url = "http://video.yourapi.ru/api-data/video/list"
         request({
             method: "GET",
@@ -106,7 +106,7 @@ app.get("/watch/:videoid", (req, res) => {
         sidebar: false
     }
 
-    if (searchTerm !== undefined){
+    if (searchTerm !== undefined) {
         const indexHtml = fs.readFileSync(path.resolve(__dirname, `./../dist/index.html`), "utf-8")
         const [head, tail] = indexHtml.split("{content}")
         res.write(head)
@@ -146,7 +146,7 @@ app.get("/watch/:videoid", (req, res) => {
                 res.end()
             })
         });
-    }else {
+    } else {
         const html = fs.readFileSync(path.resolve(__dirname, `./../dist/video.html`), "utf-8")
 
         const [head, tail] = html.split("{content}")
@@ -161,46 +161,50 @@ app.get("/watch/:videoid", (req, res) => {
         window.__VIDEO__ = ${JSON.stringify(body)}
       </script>
       `)
+            fetchComments(videoid).then(response => {
+                const comments = response.response;
 
-            fetchVideos().then(response => {
-                const reactElement = React.createElement(AppWatchVideo, {
-                    initialState: initialState,
-                    videoid: videoid,
-                    video: JSON.parse(body).response,
-                    videos: response.response
-                })
-                const video = JSON.parse(body).response;
-                const metaData = template.template(video)
+                fetchVideos().then(response => {
+                    const reactElement = React.createElement(AppWatchVideo, {
+                        initialState: initialState,
+                        videoid: videoid,
+                        comments: comments,
+                        video: JSON.parse(body).response,
+                        videos: response.response
+                    })
+                    const video = JSON.parse(body).response;
+                    const metaData = template.template(video)
 
-                const newHead = head.split("</head>").join(metaData)
-                const stream = renderToNodeStream(reactElement)
-                res.write(newHead)
-                stream.pipe(res, {end: false})
-                stream.on("end", () => {
-                    res.write(newTail)
-                    res.end()
-                })
-            }).catch(error => {
-                console.log(error)
-                const reactElement = React.createElement(AppWatchVideo, {
-                    initialState: initialState,
-                    videoid: videoid,
-                    video: JSON.parse(body).response,
-                    videos: []
-                })
-                const video = JSON.parse(body).response;
-                const metaData = template.template(video)
+                    const newHead = head.split("</head>").join(metaData)
+                    const stream = renderToNodeStream(reactElement)
+                    res.write(newHead)
+                    stream.pipe(res, {end: false})
+                    stream.on("end", () => {
+                        res.write(newTail)
+                        res.end()
+                    })
+                }).catch(error => {
+                    console.log(error)
+                    const reactElement = React.createElement(AppWatchVideo, {
+                        initialState: initialState,
+                        videoid: videoid,
+                        video: JSON.parse(body).response,
+                        videos: []
+                    })
+                    const video = JSON.parse(body).response;
+                    const metaData = template.template(video)
 
-                const newHead = head.split("<head>")
-                    .join(metaData)
-                res.write(newHead)
+                    const newHead = head.split("<head>")
+                        .join(metaData)
+                    res.write(newHead)
 
-                const stream = renderToNodeStream(reactElement)
-                stream.pipe(res, {end: false})
-                stream.on("end", () => {
-                    res.write(newTail)
-                    res.end()
-                })
+                    const stream = renderToNodeStream(reactElement)
+                    stream.pipe(res, {end: false})
+                    stream.on("end", () => {
+                        res.write(newTail)
+                        res.end()
+                    })
+                });
             });
         })
     }

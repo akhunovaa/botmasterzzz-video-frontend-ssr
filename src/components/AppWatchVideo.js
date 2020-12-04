@@ -20,6 +20,7 @@ class AppWatchVideo extends Component {
         this.state = {
             initialState: props.initialState || {},
             video: props.video || {},
+            comments: props.comments || {},
             videos: props.videos
         }
     }
@@ -32,7 +33,7 @@ class AppWatchVideo extends Component {
         const {initialState} = this.props
         const store = configureStore(initialState);
 
-        const {video, videos} = this.state
+        const {video, videos, comments} = this.state
         return (
             <Provider store={store}>
 
@@ -48,7 +49,7 @@ class AppWatchVideo extends Component {
                     <Sidebar/>
                     <BottomBar/>
                     <div className='home-container'>
-                        <WatchVideo videos={videos} video={video}/>
+                        <WatchVideo videos={videos} video={video} comments={comments}/>
                     </div>
                 </div>
             </Provider>

@@ -24,8 +24,17 @@ export function fetchVideos() {
 }
 
 export function searchVideos(searchterm) {
-  const url = `https://video.yourapi.ru/api-data/video/search?searchterm= + ${encodeURIComponent(searchterm)}`;
+  const url = `https://video.yourapi.ru/api-data/video/search?searchterm=${encodeURIComponent(searchterm)}`;
   //const url = `http://localhost:7100/api-data/video/search?searchterm= + ${encodeURIComponent(searchterm)}`;
+  return request({
+    url: url,
+    json: true,
+    method: 'GET'
+  });
+}
+
+export function fetchComments(media) {
+  const url = `https://video.yourapi.ru/api-data/video/comments?media=${encodeURIComponent(media)}`;
   return request({
     url: url,
     json: true,

@@ -51,20 +51,20 @@ export const timeSince = (timestamp) => {
 
   interval = Math.floor(seconds / 86400);
   if (interval > 1) {
-    return interval + " дней назад";
+    return interval + " дней(-я) назад";
   }
 
   interval = Math.floor(seconds / 3600);
   if (interval > 1) {
-    return interval + " часов назад";
+    return interval + " часов(-а) назад";
   }
 
   interval = Math.floor(seconds / 60);
   if (interval > 1) {
-    return interval + " минут назад";
+    return interval + " минут(-ы) назад";
   }
 
-  return Math.floor(seconds) + " секунд назад";
+  return Math.floor(seconds) + " секунд(-ы) назад";
 };
 
 export const upload = (resourceType, file) => {

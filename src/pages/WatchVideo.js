@@ -1,11 +1,10 @@
 import React from "react";
-import MetaTags from 'react-meta-tags';
 import "../sass/WatchVideo.css"
+import "../sass/Comments.css"
 // UI elements
 import Player from "../components/Player";
 import VideoCard from "../components/VideoCard";
 import NoResults from "../components/NoResults";
-import {fetchVideos} from "../Api";
 
 // reducers and others
 import {timeSince} from "../utils";
@@ -17,6 +16,7 @@ class WatchVideo extends React.Component {
         super(props)
         this.state = {
             video: props.video,
+            comments: props.comments,
             videos: props.videos
         }
 
@@ -27,7 +27,7 @@ class WatchVideo extends React.Component {
     }
 
     render() {
-        const {video, videos} = this.state;
+        const {video, videos, comments} = this.state;
 
         // const videos = fetchVideos().then(response => {
         //     return JSON.stringify(response.response);
@@ -60,6 +60,42 @@ class WatchVideo extends React.Component {
 
                             <div className="channel-info-description">
                                 <p>{video.description}</p>
+                            </div>
+                            <div className='comments'>
+                                <h3>{comments?.length} комментариев(-я)</h3>
+
+                                {/*<div className="add-comment">*/}
+                                {/*    /!*<img src={user.avatar} alt="avatar"/>*!/*/}
+                                {/*    <textarea*/}
+                                {/*        placeholder="Add a public comment"*/}
+                                {/*        value={comment.value}*/}
+                                {/*        onKeyDown={handleAddComment}*/}
+                                {/*        onChange={comment.onChange}*/}
+                                {/*    />*/}
+                                {/*</div>*/}
+
+                                {comments &&
+                                comments.map((comment) => (
+                                    <div key={comment.id} className="comment">
+                                        {/*<a href={`/channel/${comment.User?.id}`}>*/}
+                                        {/*    <img src={comment.User?.avatar} alt="Фотография профиля"/>*/}
+                                        {/*</a>*/}
+                                        <div className="comment-info">
+                                            <p className="secondary">
+                <span>
+                  <a href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
+                    {comment.user}
+                  </a>
+
+                </span>
+                 <span style={{marginLeft: "0.6rem"}}>
+                  | {timeSince(comment.time)} назад
+                </span>
+                                            </p>
+                                            <p>{comment.comment}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
