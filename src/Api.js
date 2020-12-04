@@ -15,7 +15,7 @@ const request = async (options) => {
 };
 
 export function fetchVideos() {
-  const url = "http://video.yourapi.ru/api-data/video/list"
+  const url = "https://video.yourapi.ru/api-data/video/list"
   return request({
     url: url,
     json: true,
@@ -24,7 +24,8 @@ export function fetchVideos() {
 }
 
 export function searchVideos(searchterm) {
-  const url = "http://video.yourapi.ru/api-data/video/search?searchterm=" + searchterm;
+  const url = `https://video.yourapi.ru/api-data/video/search?searchterm= + ${encodeURIComponent(searchterm)}`;
+  //const url = `http://localhost:7100/api-data/video/search?searchterm= + ${encodeURIComponent(searchterm)}`;
   return request({
     url: url,
     json: true,
