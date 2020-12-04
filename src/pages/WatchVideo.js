@@ -62,7 +62,7 @@ class WatchVideo extends React.Component {
                                 <p>{video.description}</p>
                             </div>
                             <div className='comments'>
-                                <h3>{comments?.length} комментариев(-я)</h3>
+                                <h3>{comments?.length} комментариев</h3>
 
                                 {/*<div className="add-comment">*/}
                                 {/*    /!*<img src={user.avatar} alt="avatar"/>*!/*/}
