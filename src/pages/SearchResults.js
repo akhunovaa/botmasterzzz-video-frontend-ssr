@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { StyledTrending } from "./Trending";
 import TrendingCard from "../components/TrendingCard";
 import NoResults from "../components/NoResults";
 import Skeleton from "../skeletons/TrendingSkeleton";
@@ -39,13 +38,13 @@ const SearchResults = () => {
   return (
     <StyledTrending>
       <h2>Результаты поиска</h2>
-
-      {!isFetching &&
-        videos.map((video) => (
-          <a key={video.id} href={`/watch/${video.id}`}>
-            <TrendingCard video={video} />
-          </a>
+      <div className='video-grid'>
+        {videos.map((video) => (
+            <a key={video.id} href={`/watch/${video.id}`}>
+              <TrendingCard video={video} />
+            </a>
         ))}
+      </div>
     </StyledTrending>
   );
 };

@@ -71,14 +71,15 @@ class AppSearchResult extends Component {
                     <Sidebar/>
                     <BottomBar/>
                     <div className='home-container'>
-                        <div className='trending'
-                             style={{padding: '2rem 1.3rem 7rem', width: '85%', margin: '0px auto'}}>
+                        <div className='home' style={{padding: '2rem 1.3rem 7rem', width: '85%', margin: '0px auto'}}>
                             <h2>Результаты поиска</h2>
-                            {videos.map((video) => (
-                                <a key={video.id} href={`/watch/${video.id}`}>
-                                    <TrendingCard video={video}/>
-                                </a>
-                            ))}
+                            <div className='video-grid'>
+                                {videos.map((video) => (
+                                    <a key={video.id} href={`/watch/${video.id}`}>
+                                        <TrendingCard video={video}/>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
