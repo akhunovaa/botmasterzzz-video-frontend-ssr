@@ -46,12 +46,12 @@ export const timeSince = (timestamp) => {
 
   interval = Math.floor(seconds / 2592000);
   if (interval > 1) {
-    return interval + " месяец назад";
+    return interval + " месяца(ев) назад";
   }
 
   interval = Math.floor(seconds / 86400);
   if (interval > 1) {
-    return interval + " дней(-я) назад";
+    return interval + " дня(ей) назад";
   }
 
   interval = Math.floor(seconds / 3600);
@@ -61,7 +61,7 @@ export const timeSince = (timestamp) => {
 
   interval = Math.floor(seconds / 60);
   if (interval > 1) {
-    return interval + " минут(-ы) назад";
+    return interval + " минуту(-ы) назад";
   }
 
   return Math.floor(seconds) + " секунд(-ы) назад";

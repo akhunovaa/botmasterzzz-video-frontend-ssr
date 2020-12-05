@@ -17,7 +17,7 @@ const TrendingCard = ({ video }) => {
                         <span>{video.title}</span>
                         <span>•</span>
                         <span>{video.duration || 0} просмотров</span>
-                        <span>•</span> <span>{timeSince(video.createdAt)} назад</span>
+                        <span>•</span> <span>{timeSince(video.createdAt)}</span>
                     </p>
                 </div>
                 </div>
