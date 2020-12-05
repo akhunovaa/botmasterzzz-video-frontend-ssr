@@ -48,7 +48,16 @@ class WatchVideo extends React.Component {
                             <div className="video"><Player video={video}/></div>
 
                             <div className="video-info">
-                                <h3>{video.title + ' - ' + video.description}</h3>
+                                <div className="comment">
+                                    <a href={video.author ? `https://t.me/${video.author}` : '#'}>
+                                        {
+                                            video.user_telegram_id !== 0
+                                                ? (<img src={`https://video.yourapi.ru/api-data/image/profile/${video.user_telegram_id}`} alt="Фотография отсутствует"/>)
+                                                : (<img src={`https://video.yourapi.ru/default.jpeg`} alt="Фотография отсутствует"/>)
+                                        }
+                                    </a>
+                                    <h3>{video.title + ' - ' + video.description}</h3>
+                                </div>
 
                                 <div className="video-info-stats">
                                     <p>
@@ -62,7 +71,7 @@ class WatchVideo extends React.Component {
                                 <p>{video.description}</p>
                             </div>
                             <div className='comments'>
-                                <h3>{comments?.length} комментария(ев)</h3>
+                                <h3>Комментов: {comments?.length} (прокомментировать можно в https://t.me/tiktiktokrobot</h3>
 
                                 {/*<div className="add-comment">*/}
                                 {/*    /!*<img src={user.avatar} alt="avatar"/>*!/*/}
@@ -74,12 +83,11 @@ class WatchVideo extends React.Component {
                                 {/*    />*/}
                                 {/*</div>*/}
 
-                                {comments &&
-                                comments.map((comment) => (
+                                {comments && comments.map((comment) => (
                                     <div key={comment.id} className="comment">
-                                        {/*<a href={`/channel/${comment.User?.id}`}>*/}
-                                        {/*    <img src={comment.User?.avatar} alt="Фотография профиля"/>*/}
-                                        {/*</a>*/}
+                                        <a href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
+                                            <img src={`https://video.yourapi.ru/api-data/image/profile/${comment.user_telegram_id}`} alt="Фотография отсутствует"/>
+                                        </a>
                                         <div className="comment-info">
                                             <p className="secondary">
                 <span>
@@ -89,7 +97,7 @@ class WatchVideo extends React.Component {
 
                 </span>
                  <span style={{marginLeft: "0.6rem"}}>
-                  | {timeSince(comment.time)} назад
+                  | {timeSince(comment.time)}
                 </span>
                                             </p>
                                             <p>{comment.comment}</p>

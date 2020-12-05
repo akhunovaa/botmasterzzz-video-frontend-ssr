@@ -6,13 +6,13 @@ import "../sass/Avatar.css"
 const VideoCard = ({ video }) => {
 
 
-
+const profileImageSrc = video.user_telegram_id < 100 ? "https://video.yourapi.ru/default.jpeg" : "https://video.yourapi.ru/api-data/image/profile/" + video.user_telegram_id;
   return (
     <div className='video-card'>
         <img className="thumb" src={video.thumbnail} onError={(e) => {e.target.src = 'https://video.yourapi.ru/default.jpeg'; e.target.onError = null;}} alt={video.title} />
       <div className="video-info-container">
         <div className="channel-avatar">
-            <div className='avatar' style={{ marginRight: "0.8rem" }}><img src="https://video.yourapi.ru/default.jpeg" alt={video.title}/></div>
+            <div className='avatar' style={{ marginRight: "0.8rem" }}><img src={profileImageSrc} alt={video.title}/></div>
         </div>
         <div className="video-info">
           <h4>
