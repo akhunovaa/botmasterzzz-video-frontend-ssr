@@ -71,8 +71,8 @@ class WatchVideo extends React.Component {
                                 <p>{video.description}</p>
                             </div>
                             <div className='comments'>
-                                <h3>Комментов: {comments?.length} (прокомментировать можно в https://t.me/tiktiktokrobot</h3>
-
+                                <h3>Комментов: {comments?.length}</h3>
+                                <a href="https://t.me/tiktiktokrobot">(прокомментировать)</a>
                                 {/*<div className="add-comment">*/}
                                 {/*    /!*<img src={user.avatar} alt="avatar"/>*!/*/}
                                 {/*    <textarea*/}
