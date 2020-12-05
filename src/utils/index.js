@@ -1,148 +1,156 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
-export const client = (endpoint, { body, ...customConfig } = {}) => {
-  //const user = JSON.parse(localStorage.getItem("user"));
+export const client = (endpoint, {body, ...customConfig} = {}) => {
+    //const user = JSON.parse(localStorage.getItem("user"));
 
-  const config = {
-    method: body ? "POST" : "GET",
-    ...customConfig,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  };
+    const config = {
+        method: body ? "POST" : "GET",
+        ...customConfig,
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+    };
 
-  if (body) {
-    config.body = JSON.stringify(body);
-  }
+    if (body) {
+        config.body = JSON.stringify(body);
+    }
 
-  // if (customConfig.token) {
-  //   config.headers.authorization = `Bearer ${customConfig.token}`;
-  // }
-  //
-  // if (!customConfig.token && user?.token) {
-  //   config.headers.authorization = `Bearer ${user.token}`;
-  // }
+    // if (customConfig.token) {
+    //   config.headers.authorization = `Bearer ${customConfig.token}`;
+    // }
+    //
+    // if (!customConfig.token && user?.token) {
+    //   config.headers.authorization = `Bearer ${user.token}`;
+    // }
 
-  const res = fetch(endpoint, config);
-  const data = res.json();
+    const res = fetch(endpoint, config);
+    const data = res.json();
 
-  if (res.status === 400) {
-    return toast(data.message);
-  }
+    if (res.status === 400) {
+        return toast(data.message);
+    }
 
-  return data;
+    return data;
 };
 
 export const timeSince = (timestamp) => {
-  const seconds = Math.floor((new Date() - new Date(timestamp)) / 1000);
+    const seconds = Math.floor((new Date() - new Date(timestamp)) / 1000);
 
-  let interval = Math.floor(seconds / 31536000);
+    let interval = Math.floor(seconds / 31536000);
 
-  if (interval > 1) {
-    return interval + " лет назад";
-  }
+    if (interval > 1) {
+        return interval + " " + interval + " лет назад";
+    }
 
-  interval = Math.floor(seconds / 2592000);
-  if (interval > 1) {
-    return interval + " месяцев(а) назад";
-  }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " " + num_word(interval, ['месяц', 'месяца', 'месяцев']) + " назад";
+    }
 
-  interval = Math.floor(seconds / 86400);
-  if (interval > 1) {
-    return interval + " дней(я) назад";
-  }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " " + num_word(interval, ['день', 'дня', 'дней']) + " назад";
+    }
 
-  interval = Math.floor(seconds / 3600);
-  if (interval > 1) {
-    return interval + " часов(а) назад";
-  }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " " + num_word(interval, ['час', 'часа', 'часов']) + " назад";
+    }
 
-  interval = Math.floor(seconds / 60);
-  if (interval > 1) {
-    return interval + " минуту(-ы) назад";
-  }
-
-  return Math.floor(seconds) + " секунд(-ы) назад";
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " " + num_word(interval, ['минуту', 'минут', 'минуты']) + " назад";
+    }
+    return Math.floor(seconds) + " " + num_word(Math.floor(seconds), ['секунда', 'секунд', 'секунды']) + " назад";
 };
 
 export const upload = (resourceType, file) => {
-  const formData = new FormData();
-  formData.append("upload_preset", "botmasterzzz");
-  formData.append("file", file);
+    const formData = new FormData();
+    formData.append("upload_preset", "botmasterzzz");
+    formData.append("file", file);
 
-  let toastId = null;
-  const config = {
-    onUploadProgress: (p) => {
-      const progress = p.loaded / p.total;
-      if (toastId === null) {
-        toastId = toast("Upload in Progress", {
-          progress,
-        });
-      } else {
-        toast.update(toastId, {
-          progress,
-        });
-      }
-    },
-  };
+    let toastId = null;
+    const config = {
+        onUploadProgress: (p) => {
+            const progress = p.loaded / p.total;
+            if (toastId === null) {
+                toastId = toast("Upload in Progress", {
+                    progress,
+                });
+            } else {
+                toast.update(toastId, {
+                    progress,
+                });
+            }
+        },
+    };
 
-  const { data } = axios.post(
-    `${process.env.REACT_APP_CLOUDINARY_ENDPOINT}/${resourceType}/upload`,
-    formData,
-    config
-  );
+    const {data} = axios.post(
+        `${process.env.REACT_APP_CLOUDINARY_ENDPOINT}/${resourceType}/upload`,
+        formData,
+        config
+    );
 
-  toast.dismiss(toastId);
+    toast.dismiss(toastId);
 
-  return data.secure_url;
+    return data.secure_url;
 };
 
 export const authenticate = (type, data) => {
-  const backendUrl = process.env.REACT_APP_BE;
+    const backendUrl = process.env.REACT_APP_BE;
 
-  try {
-    const { data: token } = client(`${backendUrl}/auth/${type}`, {
-      body: data,
-    });
+    try {
+        const {data: token} = client(`${backendUrl}/auth/${type}`, {
+            body: data,
+        });
 
-    if (token) {
-      const { data: user } = client(`${backendUrl}/auth/me`, { token });
+        if (token) {
+            const {data: user} = client(`${backendUrl}/auth/me`, {token});
 
-      localStorage.setItem("user", JSON.stringify({ ...user, token }));
+            localStorage.setItem("user", JSON.stringify({...user, token}));
 
-      return { ...user, token };
+            return {...user, token};
+        }
+    } catch (err) {
+        console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
 };
 
 export const removeChannelLocalSt = (channelId) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
-  const updated = {
-    ...user,
-    channels: user.channels.filter((channel) => channel.id !== channelId),
-  };
+    const updated = {
+        ...user,
+        channels: user.channels.filter((channel) => channel.id !== channelId),
+    };
 
-  localStorage.setItem("user", JSON.stringify(updated));
+    localStorage.setItem("user", JSON.stringify(updated));
 };
 
 export const addChannelLocalSt = (channel) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
-  const updated = {
-    ...user,
-    channels: [channel, ...user.channels],
-  };
+    const updated = {
+        ...user,
+        channels: [channel, ...user.channels],
+    };
 
-  localStorage.setItem("user", JSON.stringify(updated));
+    localStorage.setItem("user", JSON.stringify(updated));
 };
 
 export const updateUserLocalSt = (data) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const updatedUser = { ...user, ...data };
-  localStorage.setItem("user", JSON.stringify(updatedUser));
+    const user = JSON.parse(localStorage.getItem("user"));
+    const updatedUser = {...user, ...data};
+    localStorage.setItem("user", JSON.stringify(updatedUser));
 };
+
+function num_word(value, words) {
+    value = Math.abs(value) % 100;
+    var num = value % 10;
+    if (value > 10 && value < 20) return words[2];
+    if (num > 1 && num < 5) return words[1];
+    if (num == 1) return words[0];
+    return words[2];
+}

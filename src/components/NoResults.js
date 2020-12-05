@@ -8,7 +8,7 @@ const NoResults = ({title, text}) => {
                 <img className='no-result-img' src={"https://video.yourapi.ru/default.jpeg"} alt="Ничего не найдено..."/>
             </a>
             <h2>{title}</h2>
-            <a href="https://t.me/tiktiktokrobot">
+            <a target="_blank" href="https://t.me/tiktiktokrobot">
                 <p className="secondary">{text}</p>
             </a>
 

@@ -49,7 +49,7 @@ class WatchVideo extends React.Component {
 
                             <div className="video-info">
                                 <div className="comment">
-                                    <a href={video.author ? `https://t.me/${video.author}` : '#'}>
+                                    <a target="_blank" href={video.author ? `https://t.me/${video.author}` : '#'}>
                                         {
                                             video.user_telegram_id !== 0
                                                 ? (<img src={`https://video.yourapi.ru/api-data/image/profile/${video.user_telegram_id}`} alt="Фотография отсутствует"/>)
@@ -71,8 +71,10 @@ class WatchVideo extends React.Component {
                                 <p>{video.description}</p>
                             </div>
                             <div className='comments'>
-                                <h3>Комментов: {comments?.length}</h3>
-                                <a href="https://t.me/tiktiktokrobot">(прокомментировать)</a>
+                                <div style={{display: 'inline-flex'}}>
+                                    <h3>Комментарии ({comments?.length}) <a style={{color: '#8a8a8a', size: 16}} href="https://t.me/tiktiktokrobot" target="_blank">[комментировать]</a></h3>
+                                </div>
+
                                 {/*<div className="add-comment">*/}
                                 {/*    /!*<img src={user.avatar} alt="avatar"/>*!/*/}
                                 {/*    <textarea*/}
@@ -85,13 +87,13 @@ class WatchVideo extends React.Component {
 
                                 {comments && comments.map((comment) => (
                                     <div key={comment.id} className="comment">
-                                        <a href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
+                                        <a target="_blank" href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
                                             <img src={`https://video.yourapi.ru/api-data/image/profile/${comment.user_telegram_id}`} alt="Фотография отсутствует"/>
                                         </a>
                                         <div className="comment-info">
                                             <p className="secondary">
                 <span>
-                  <a href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
+                  <a target="_blank" href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
                     {comment.user}
                   </a>
 
