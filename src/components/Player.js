@@ -28,11 +28,12 @@ class Player extends React.Component {
             });
 
             this.player.options({
-                autoplay: true,
-                loop: true,
+                autoplay: false,
+                loop: false,
                 preload: 'metadata',
                 language: 'ru',
-                height: 640
+                height: 640,
+                poster: video.thumbnail
             });
         }
     }
