@@ -40,10 +40,45 @@ export function template(video = []) {
 <meta name="theme-color" content="#000000" />
       
 <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "${title}",
+      "description": "${video.description}",
+      "thumbnailUrl": [
+        "${video.thumbnail}"
+       ],
+      "uploadDate": "${new Date(video.createdAt * 1000).toISOString()}",
+      "duration": "${iso8601_duration(video.duration)}",
+      "contentUrl": "${video.src}",
+      "embedUrl": "${video.url}",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": { "@type": "http://schema.org/WatchAction" },
+        "userInteractionCount": ${video.duration - 3}
+      },
+      "regionsAllowed": ""
+    }
+</script>
 <link rel="apple-touch-icon" href="logo192.png" />
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 </head>
 `
+}
+
+function iso8601_duration(seconds){
+
+    // const days =  Math.floor(seconds / 86400);
+    // const second = seconds % 86400;
+    //
+    // const hours =  Math.floor(second % 3600);
+    // const secondI =  second % 3600;
+
+    const minutes =  Math.floor(seconds % 60);
+    const secondP = seconds % 60;
+
+    return "P" + 0 + "DT" + 0 + "H" + 0 + "M" + secondP + "S";
 }
 
 // <meta name="twitter:card" content="player"/>
