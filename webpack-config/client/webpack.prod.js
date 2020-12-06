@@ -23,7 +23,8 @@ module.exports = merge(common, {
             { from: './logo192.png', to: './logo192.png', force:true },
             { from: './logo512.png', to: './logo512.png', force:true },
             { from: './default.jpeg', to: './default.jpeg', force:true },
-            { from: './favicon.ico', to: './favicon.ico', force:true }
+            { from: './favicon.ico', to: './favicon.ico', force:true },
+            { from: './robots.txt', to: './robots.txt', force:true }
           ]
         }
     ),
