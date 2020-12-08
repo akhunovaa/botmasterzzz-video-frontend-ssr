@@ -49,7 +49,7 @@ export function template(video = []) {
       "thumbnailUrl": [
         "${video.thumbnail}"
        ],
-      "uploadDate": "${new Date(video.createdAt * 1000).toISOString()}",
+      "uploadDate": "${new Date(video.createdAt).toISOString()}",
       "duration": "${iso8601_duration(video.duration)}",
       "contentUrl": "${video.src}",
       "embedUrl": "${video.url}",
