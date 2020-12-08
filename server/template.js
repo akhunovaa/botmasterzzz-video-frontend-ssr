@@ -25,7 +25,7 @@ export function template(video = []) {
 <meta property="og:video:height" content="720"/>
 <meta property="ya:ovs:original_name" content='${title}'/>
 <meta property="ya:ovs:allow_embed" content="true"/>
-<meta property="ya:ovs:upload_date" content='${new Date(video.createdAt * 1000).toISOString()}'/>
+<meta property="ya:ovs:upload_date" content='${new Date(video.createdAt).toISOString()}'/>
 <meta property="ya:ovs:views_total" content='${video.duration}'/>
 <meta property="ya:ovs:views_last_day" content='${video.duration}'/>
 <meta property="ya:ovs:likes" content='${video.duration - 3}'/>
