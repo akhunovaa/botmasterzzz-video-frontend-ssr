@@ -24,7 +24,16 @@ module.exports = merge(common, {
             { from: './logo512.png', to: './logo512.png', force:true },
             { from: './default.jpeg', to: './default.jpeg', force:true },
             { from: './favicon.ico', to: './favicon.ico', force:true },
-            { from: './robots.txt', to: './robots.txt', force:true }
+            { from: './robots.txt', to: './robots.txt', force:true },
+            { from: './android-chrome-192x192.png', to: './android-chrome-192x192.png', force:true },
+            { from: './android-chrome-512x512.png', to: './android-chrome-512x512.png', force:true },
+            { from: './apple-touch-icon.png', to: './apple-touch-icon.png', force:true },
+            { from: './browserconfig.xml', to: './browserconfig.xml', force:true },
+            { from: './favicon-16x16.png', to: './favicon-16x16.png', force:true },
+            { from: './favicon-32x32.png', to: './favicon-32x32.png', force:true },
+            { from: './mstile-150x150.png', to: './mstile-150x150.png', force:true },
+            { from: './safari-pinned-tab.svg', to: './safari-pinned-tab.svg', force:true },
+            { from: './site.webmanifest', to: './site.webmanifest', force:true }
           ]
         }
     ),
