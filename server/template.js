@@ -50,13 +50,13 @@ export function template(video = []) {
         "${video.thumbnail}"
        ],
       "uploadDate": "${new Date(video.createdAt).toISOString()}",
-      "duration": "${iso8601_duration(video.duration)}",
+      "duration": "${iso8601_duration(video.duration > 0 ? video.duration : 8)}",
       "contentUrl": "${video.src}",
       "embedUrl": "${video.url}",
       "interactionStatistic": {
         "@type": "InteractionCounter",
         "interactionType": { "@type": "http://schema.org/WatchAction" },
-        "userInteractionCount": ${video.duration - 3}
+        "userInteractionCount": ${video.duration > 0 ? video.duration : 5}
       },
       "regionsAllowed": ""
     }
