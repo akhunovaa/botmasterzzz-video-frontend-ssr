@@ -45,7 +45,7 @@ export function template(video = []) {
       "@context": "https://schema.org",
       "@type": "VideoObject",
       "name": "${title}",
-      "description": "${video.description}",
+      "description": "${video.description ? video.description : title}",
       "thumbnailUrl": [
         "${video.thumbnail}"
        ],
