@@ -71,7 +71,7 @@ class Player extends React.Component {
             {/*    width: '100%',*/}
             {/*    minWidth: '480px'*/}
             {/*} : 0}*/}
-                <video id="currentVideo" style={window.innerWidth <= 400 ? {width: '100%', minHeight: '640px', minWidth: '340px'} : {width: '100%', minHeight: '640px', minWidth: '330px'}} className="video-js video-nn vjs-big-play-centered" controls ref={ node => this.videoNode = node } >
+                <video poster={video.thumbnail} id="currentVideo" style={window.innerWidth <= 400 ? {width: '100%', minHeight: '640px', minWidth: '340px'} : {width: '100%', minHeight: '640px', minWidth: '330px'}} className="video-js video-nn vjs-big-play-centered" controls ref={ node => this.videoNode = node } >
                     <source src={video.src}/>
                 </video>
             </div>
