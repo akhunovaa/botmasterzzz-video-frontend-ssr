@@ -61,7 +61,7 @@ export const timeSince = (timestamp) => {
 
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
-        return interval + " " + num_word(interval, ['минуту', 'минут', 'минуты']) + " назад";
+        return interval + " " + num_word(interval, ['минуту', 'минуты', 'минут']) + " назад";
     }
     return Math.floor(seconds) + " " + num_word(Math.floor(seconds), ['секунда', 'секунд', 'секунды']) + " назад";
 };
