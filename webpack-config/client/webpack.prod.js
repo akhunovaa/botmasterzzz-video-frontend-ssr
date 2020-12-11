@@ -19,6 +19,7 @@ module.exports = merge(common, {
           patterns: [
             { from: './manifest.json', to: './manifest.json', force:true },
             { from: './sitemap.xml', to: './sitemap.xml', force:true },
+            { from: './site-map.xml', to: './site-map.xml', force:true },
             { from: './youtube.svg', to: './youtube.svg', force:true },
             { from: './logo192.png', to: './logo192.png', force:true },
             { from: './logo512.png', to: './logo512.png', force:true },
