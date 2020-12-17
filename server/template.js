@@ -3,10 +3,10 @@ export function template(video = []) {
     let title = ''; // Dynamically ship scripts based on render type
     let description = ''; // Dynamically ship scripts based on render type
 //
-    title = video.title + ' - ' + video.description + "| BotMasterZzz | NN-BOT";
+    title = video.title + ' - ' + video.description;
 
     return `
-<title>${title}</title>
+<title>${title  + " | BotMasterZzz"}</title>
 <meta name="description" content='${video.description}'/>
 <meta property="og:description" content='${video.description}'/>
 <meta property="og:title" content='${title}'/>
