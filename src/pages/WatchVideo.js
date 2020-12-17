@@ -56,7 +56,8 @@ class WatchVideo extends React.Component {
                                                 : (<img src={`https://video.yourapi.ru/default.jpeg`} alt="Фотография отсутствует"/>)
                                         }
                                     </a>
-                                    <h3>{video.title + ' - ' + video.description}</h3>
+                                    {/*<h3>{video.title + ' - ' + video.description}</h3>*/}
+                                    <h3>{video.description}</h3>
                                 </div>
 
                                 <div className="video-info-stats">
