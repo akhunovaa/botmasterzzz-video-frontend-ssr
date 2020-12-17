@@ -16,7 +16,7 @@ const profileImageSrc = video.user_telegram_id < 100 ? "https://video.yourapi.ru
         </div>
         <div className="video-info">
           <h4>
-              {video.title === undefined ? "..." : video.title.length > 20 ? video.title.substring(0, 20) + "..." : video.title}
+              {video.title}
           </h4>
             <span className="secondary">{video.description === undefined ? "..." : video.description.length > 70 ? video.description.substring(0, 70) + "..." : video.description}</span>
           <p className="secondary">
