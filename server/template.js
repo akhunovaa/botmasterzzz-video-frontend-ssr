@@ -16,7 +16,7 @@ export function template(video = []) {
 <meta property="og:type" content="video.other"/>
 <meta property="ya:ovs:adult" content="false"/>
 <meta name="keywords" content='${video.description}'/>
-<meta property="video:duration" content='${video.duration}'/>
+<meta property="video:duration" content='${video.duration > 0 ? video.duration : 8}'/>
 <meta property="og:video" content='${video.src}'/>
 <meta property="og:video:url" content='${video.src}'/>
 <meta property="og:video:secure_url" content='${video.src}'/>
