@@ -1,9 +1,9 @@
 .video-card .thumb {
     width: 100%;
     height: 180px;
-    object-fit: cover;
+    object-fit: scale-down;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    border-radius: 40px;
 }
 
 .video-card .video-info-container {
@@ -24,6 +24,9 @@
 @media screen and (max-width: 600px) {
     .video-card .thumb {
         height: 250px;
+        object-fit: scale-down;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 40px;
     }
 }
 
@@ -31,5 +34,8 @@
     .video-card .thumb {
         height: 200px;
         width: 340px;
+        object-fit: scale-down;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 40px;
     }
 }
