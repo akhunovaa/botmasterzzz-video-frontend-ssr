@@ -49,13 +49,16 @@ class WatchVideo extends React.Component {
 
                             <div className="video-info">
                                 <div className="comment">
-                                    <a target="_blank" href={video.author ? `https://t.me/${video.author}` : '#'}>
+                                    <a target="_blank" href={video.author ? `https://t.me/${video.author}` : `https://t.me/${video.author}`}>
                                         {
                                             video.user_telegram_id !== 0
                                                 ? (<img src={`https://video.yourapi.ru/api-data/image/profile/${video.user_telegram_id}`} alt="Фотография отсутствует"/>)
                                                 : (<img src={`https://video.yourapi.ru/default.jpeg`} alt="Фотография отсутствует"/>)
                                         }
                                     </a>
+                                    <div style={{display: 'inline-flex'}}>
+                                        <h3>NN-BOT (в новом окне) <a style={{color: '#8a8a8a', size: 16}} href={`https://t.me/tiktiktokrobot?start=${video.id}`} target="_blank">[ссылка]</a></h3>
+                                    </div>
                                     <h3>{video.title + ' - ' + video.description}</h3>
                                     {/*<h3>{video.description}</h3>*/}
                                 </div>
@@ -73,7 +76,7 @@ class WatchVideo extends React.Component {
                             </div>
                             <div className='comments'>
                                 <div style={{display: 'inline-flex'}}>
-                                    <h3>Комментарии ({comments?.length}) <a style={{color: '#8a8a8a', size: 16}} href="https://t.me/tiktiktokrobot" target="_blank">[комментировать]</a></h3>
+                                    <h3>Комментарии ({comments?.length}) <a style={{color: '#8a8a8a', size: 16}} href={`https://t.me/tiktiktokrobot?start=${video.id}`} target="_blank">[комментировать]</a></h3>
                                 </div>
 
                                 {/*<div className="add-comment">*/}
