@@ -60,7 +60,7 @@ class WatchVideo extends React.Component {
                                     {/*<h3>{video.description}</h3>*/}
                                 </div>
                                 <div style={{display: 'inline-flex'}}>
-                                    <h3><a style={{color: '#8a8a8a', size: 16}} href={`https://t.me/tiktiktokrobot?start=${video.id}`} target="_blank">[NN-BOT]</a></h3>
+                                    <h3><a style={{color: '#8a8a8a', size: 16}} href={`https://t.me/tiktiktokrobot?start=${video.id}`} target="_blank">[NN-BOT 🤖 TikTok RoBOT]</a></h3>
                                 </div>
                                 <div className="video-info-stats">
                                     <p>
