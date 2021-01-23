@@ -75,7 +75,7 @@ class WatchVideo extends React.Component {
                             </div>
                             <div className='comments'>
                                 <div style={{display: 'inline-flex'}}>
-                                    <h3>Комментарии ({comments?.length}) <a style={{color: '#8a8a8a', size: 16}} href={`https://t.me/tiktiktokrobot?start=${video.id}`} target="_blank">[комментировать]</a></h3>
+                                    <h3>Комментарии {comments.length > 0 ? '(' + comments?.length + ')' : 'отсутствуют'} <a style={{color: '#8a8a8a', size: 16}} href={`https://t.me/tiktiktokrobot?start=${video.id}`} target="_blank">[комментировать]</a></h3>
                                 </div>
 
                                 {/*<div className="add-comment">*/}
@@ -87,8 +87,7 @@ class WatchVideo extends React.Component {
                                 {/*        onChange={comment.onChange}*/}
                                 {/*    />*/}
                                 {/*</div>*/}
-
-                                {comments && comments.map((comment) => (
+                                {comments && comments.length > 0 && comments.map((comment) => (
                                     <div key={comment.id} className="comment">
                                         <a target="_blank" href={comment.nickname ? `https://t.me/${comment.nickname}` : '#'}>
                                             <img src={`https://video.yourapi.ru/api-data/image/profile/${comment.user_telegram_id}`} alt="Фотография отсутствует"/>
