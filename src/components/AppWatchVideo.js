@@ -41,8 +41,9 @@ class AppWatchVideo extends Component {
                     <div/>
                     <ToastContainer
                         autoClose={2500}
-                        position="top-right"
+                        position="top-left"
                         closeButton={false}
+                        style={{height: '50px'}}
                     />
                     <ScrollToTop/>
                     <Navbar/>

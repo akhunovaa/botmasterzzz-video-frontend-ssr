@@ -25,7 +25,7 @@ const Navbar = () => {
           onClick={handleToggleSidebar}
         />
         <span>
-          <a href="/">BotmasterZzz</a>
+          <a href="/">NN-BOT</a>
         </span>
       </div>
 
