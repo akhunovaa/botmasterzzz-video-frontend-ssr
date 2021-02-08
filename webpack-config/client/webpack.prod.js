@@ -25,6 +25,8 @@ module.exports = merge(common, {
             { from: './logo192.png', to: './logo192.png', force:true },
             { from: './logo512.png', to: './logo512.png', force:true },
             { from: './default.jpeg', to: './default.jpeg', force:true },
+            { from: './arch.jpeg', to: './arch.jpeg', force:true },
+            { from: './gRPC.jpeg', to: './gRPC.jpeg', force:true },
             { from: './nn_bot_logo_1024x1024.png', to: './nn_bot_logo_1024x1024.png', force:true },
             { from: './favicon.ico', to: './favicon.ico', force:true },
             { from: './robots.txt', to: './robots.txt', force:true },
