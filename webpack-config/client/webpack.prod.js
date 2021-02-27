@@ -24,6 +24,7 @@ module.exports = merge(common, {
             { from: './sitemap_fourth.xml', to: './sitemap_fourth.xml', force:true },
             { from: './sitemap_third_one.xml', to: './sitemap_third_one.xml', force:true },
             { from: './sitemap_third_two.xml', to: './sitemap_third_two.xml', force:true },
+            { from: './sitemap_third_three.xml', to: './sitemap_third_three.xml', force:true },
             { from: './site-map.xml', to: './site-map.xml', force:true },
             { from: './youtube.svg', to: './youtube.svg', force:true },
             { from: './logo192.png', to: './logo192.png', force:true },
