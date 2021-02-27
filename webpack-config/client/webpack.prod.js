@@ -20,6 +20,8 @@ module.exports = merge(common, {
             { from: './manifest.json', to: './manifest.json', force:true },
             { from: './sitemap.xml', to: './sitemap.xml', force:true },
             { from: './sitemap_two.xml', to: './sitemap_two.xml', force:true },
+            { from: './sitemap_third.xml', to: './sitemap_third.xml', force:true },
+            { from: './sitemap_fourth.xml', to: './sitemap_fourth.xml', force:true },
             { from: './site-map.xml', to: './site-map.xml', force:true },
             { from: './youtube.svg', to: './youtube.svg', force:true },
             { from: './logo192.png', to: './logo192.png', force:true },
