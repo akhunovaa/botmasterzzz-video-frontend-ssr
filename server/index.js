@@ -71,7 +71,7 @@ app.get("/", (req, res) => {
             })
         });
     } else {
-        const url = "http://video.yourapi.ru/api-data/video/list"
+        const url = "https://video.yourapi.ru/api-data/video/list"
         request({
             method: "GET",
             url
