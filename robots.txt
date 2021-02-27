@@ -1,17 +1,45 @@
 User-agent: *
 Allow: /
 Sitemap: https://video.yourapi.ru/sitemap.xml
+Sitemap: https://video.yourapi.ru/site-map.xml
+Sitemap: https://video.yourapi.ru/sitemap_fourth.xml
+Sitemap: https://video.yourapi.ru/sitemap_third.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_one.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_three.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_two.xml
+Sitemap: https://video.yourapi.ru/sitemap_two.xml
 
 User-agent: Googlebot
 Allow: /
 Sitemap: https://video.yourapi.ru/sitemap.xml
+Sitemap: https://video.yourapi.ru/site-map.xml
+Sitemap: https://video.yourapi.ru/sitemap_fourth.xml
+Sitemap: https://video.yourapi.ru/sitemap_third.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_one.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_three.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_two.xml
+Sitemap: https://video.yourapi.ru/sitemap_two.xml
 
 User-agent: Yandex
 Allow: /
 Sitemap: https://video.yourapi.ru/sitemap.xml
+Sitemap: https://video.yourapi.ru/site-map.xml
+Sitemap: https://video.yourapi.ru/sitemap_fourth.xml
+Sitemap: https://video.yourapi.ru/sitemap_third.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_one.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_three.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_two.xml
+Sitemap: https://video.yourapi.ru/sitemap_two.xml
 
 User-agent: Twitterbot
 Allow: /
 Sitemap: https://video.yourapi.ru/sitemap.xml
+Sitemap: https://video.yourapi.ru/site-map.xml
+Sitemap: https://video.yourapi.ru/sitemap_fourth.xml
+Sitemap: https://video.yourapi.ru/sitemap_third.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_one.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_three.xml
+Sitemap: https://video.yourapi.ru/sitemap_third_two.xml
+Sitemap: https://video.yourapi.ru/sitemap_two.xml
 
 Host: video.yourapi.ru
