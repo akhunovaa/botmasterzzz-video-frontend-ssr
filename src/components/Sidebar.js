@@ -33,7 +33,7 @@ const Sidebar = () => {
       <a onClick={handleCloseSidebar} href="/feed/trending" className="side-bar-active">
         <div className="side-bar-icon">
           <TrendingIcon />
-          <span>В трэнде 🔥</span>
+          <span>В тренде 🔥</span>
         </div>
       </a>
 
